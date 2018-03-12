@@ -1,0 +1,122 @@
+/* UTF-8 codepage: Příliš žluťoučký kůň úpěl ďábelské ódy. ÷ × ¤
+ * «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
+ */
+package com.github.ivavondrova.Game_of_girl;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.github.ivavondrova.Game_of_girl.logika.HerniPlan;
+import com.github.ivavondrova.Game_of_girl.logika.Hra;
+import com.github.ivavondrova.Game_of_girl.logika.Lokace;
+import com.github.ivavondrova.Game_of_girl.logika.Predmet;
+
+import static org.junit.Assert.*;
+
+
+/*******************************************************************************
+ * Testovací třída BatohTest slouží ke komplexnímu otestování
+ * třídy Batoh.
+ *
+ * @author      Iva Vondrová
+ * @version     LS 2016/2017, 27/5/2017
+ */
+public class BatohTest
+{
+    private Hra hra1;
+    private HerniPlan herniPlan;
+    
+    /***************************************************************************
+     * Inicializace předcházející spuštění každého testu a připravující tzv.
+     * přípravek (fixture), což je sada objektů, s nimiž budou testy pracovat.
+     */
+    @Before
+    public void setUp()
+    {
+        hra1 = new Hra();        
+        herniPlan = hra1.getHerniPlan();
+        Predmet klic = new Predmet ("klic", "Klic od hradni brany", true, 5,false);
+       	Predmet mec = new Predmet ("mec", "Zapomenuty mec potrebny k vysekani trni u vstupni brany", true, 10, false);
+		Predmet recept = new Predmet ("recept", "Tajny recept lektvaru, co ti da silu", true, 10, false);
+		Predmet strom = new Predmet ("strom", "Majestatne se tycici lipa", false, 20, false);
+        Lokace testLokace = herniPlan.getAktualniLokace();
+        testLokace.vlozPredmet(klic);
+        testLokace.vlozPredmet(mec);
+        testLokace.vlozPredmet(recept);
+        testLokace.vlozPredmet(strom);        
+    }
+
+
+    /***************************************************************************
+     * Úklid po testu - tato metoda se spustí po vykonání každého testu.
+     */
+    @After
+    public void tearDown()
+    {
+    }
+
+    /**
+     * Testuje přetížení batohu tak, že postupně sbírá jednotlivé předměty a testuje, zda se do batohu vejdou, nebo nikoliv.
+     */
+    @Test
+    public void testPretizeniBatohu()
+    {        		
+		// Do batohu vlozime klic a zkontrolujeme, ze batoh skutecne klic obsahuje.
+		hra1.zpracujPrikaz("seber klic");
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+		
+		// Vlozime batoh a chceme vlozit mec.
+		hra1.zpracujPrikaz("seber klic");
+		hra1.zpracujPrikaz("seber mec");
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("mec"));
+		
+		// Hrac se pokusi do batohu vlozit jeste recept, nyni je jiz ale batoh pretizeny.
+		hra1.zpracujPrikaz("seber klic");
+		hra1.zpracujPrikaz("seber mec");
+		hra1.zpracujPrikaz("seber recept");
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("mec"));
+		assertFalse(herniPlan.getBatoh().obsahujePredmet("recept"));
+    }
+    
+    /**
+     * Testuje přenositelnosti věcí.
+     */
+    @Test
+    public void testPrenositelnostiPredmetu()
+    {        
+        // Vezmeme do batohu věc, která je přenositelná.
+        hra1.zpracujPrikaz("seber klic");
+        assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+        
+        // Chceme do batohu přidat věc, která není přenositelná.
+        hra1.zpracujPrikaz("seber strom");
+        assertFalse(herniPlan.getBatoh().obsahujePredmet("strom"));      
+    }
+    
+    /**
+     * Testuje přenesení věci z prostoru do prostoru.
+     */
+    @Test
+    public void testPreneseniPredmetu()
+    {
+        Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek");
+        Lokace louka = new Lokace ("louka", "Louka zalita sluncem");
+        Predmet klic = new Predmet ("klic", "Klic od hradni brany", true, 5, false);
+        domecek.vlozPredmet(klic);	
+        domecek.setVychod(louka);
+        
+        assertTrue(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
+        hra1.zpracujPrikaz("seber klic");
+        assertFalse(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
+        assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+        hra1.zpracujPrikaz("jdi louka");
+        assertTrue(!hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
+        assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+        hra1.zpracujPrikaz("poloz klic");
+        assertTrue(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
+        assertTrue(!herniPlan.getBatoh().obsahujePredmet("klic"));
+    }
+}
