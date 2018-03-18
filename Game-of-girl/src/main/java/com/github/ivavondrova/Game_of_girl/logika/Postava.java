@@ -48,4 +48,9 @@ public class Postava
         return proslov;
     }
     
+    @Override
+    public String toString()
+    {
+        return jmeno;
+    }
 }

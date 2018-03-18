@@ -2,6 +2,8 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package com.github.ivavondrova.Game_of_girl.logika;
 
+import java.util.Observable;
+
 /**
  * Class HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -13,7 +15,7 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * @author      Iva Vondrová
  * @version     LS 2016/2017, 27/5/2017
  */
-public class HerniPlan 
+public class HerniPlan extends Observable
 {
     private static final String NAZEV_VITEZNE_LOKACE = "komnata";
     private Lokace aktualniLokace;
@@ -142,6 +144,8 @@ public class HerniPlan
     public void setAktualniLokace(Lokace lokace) 
     {
        aktualniLokace = lokace;
+       this.setChanged();
+       this.notifyObservers();
     }
     
     

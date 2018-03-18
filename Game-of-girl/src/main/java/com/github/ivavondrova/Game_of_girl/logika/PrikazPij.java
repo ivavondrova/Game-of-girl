@@ -3,6 +3,7 @@
  */
 package com.github.ivavondrova.Game_of_girl.logika;
 
+
 /*******************************************************************************
  * Třída PrikazPij implementuje pro hru prikaz pij.
  * Tato třída je součástí jednoduché textové hry.
@@ -65,7 +66,7 @@ public class PrikazPij implements IPrikaz
      */
     public String bezbarvy_napoj()
     {
-        plan.getBatoh().vyberPredmet("bezbarvy_napoj");
+        plan.getBatoh().odeberPredmet("bezbarvy_napoj");
         plan.setMagickaSila();
         plan.getHra().setKonecHry(false);
         return "Vyborne, vypil jsi zazracny lekvat a ziskal zazracnou silu.";
@@ -76,7 +77,7 @@ public class PrikazPij implements IPrikaz
      */
     public String cerveny_napoj()
     {
-        plan.getBatoh().vyberPredmet("cerveny_napoj");            
+        plan.getBatoh().odeberPredmet("cerveny_napoj");            
         plan.getHra().setKonecHry(true);
         return "Nedaval sis pozor a vypil jsi otraveny lektvar, ktery uvaril zly carodej.";
     }

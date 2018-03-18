@@ -2,12 +2,14 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package com.github.ivavondrova.Game_of_girl.logika;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
@@ -23,7 +25,7 @@ import java.util.stream.Collectors;
  * @author      Iva Vondrová
  * @version     LS 2016/2017, 27/5/2017
  */
-public class Lokace 
+public class Lokace extends Observable
 {
     private String nazev;   
     private String popis;
@@ -207,6 +209,15 @@ public class Lokace
         return Collections.unmodifiableCollection(vychody);
     }
     
+    
+    public Collection<Predmet> getPredmety() {
+    		return new ArrayList<Predmet>(seznamPredmetu.values());
+    }
+    
+    public Collection<Postava> getPostavy() {
+		return new ArrayList<Postava>(seznamPostav.values());
+    }
+    
     /**
      * Přidá předmět do lokace.
      * 
@@ -215,6 +226,8 @@ public class Lokace
     public void vlozPredmet(Predmet predmet)
     {
         seznamPredmetu.put(predmet.getNazev(), predmet);
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -303,6 +316,11 @@ public class Lokace
             jmena += jmenoPostavy + " ";
         }
         return jmena;
+    }
+    
+    @Override
+    public String toString() {
+    	return getNazev();
     }
     
 }

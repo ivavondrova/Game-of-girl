@@ -2,6 +2,7 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package com.github.ivavondrova.Game_of_girl.logika;
 
+
 /**
  * Třída PrikazKonec implementuje pro hru příkaz konec.
  * Tato třída je součástí jednoduché textové hry.
@@ -58,4 +59,5 @@ public class PrikazKonec implements IPrikaz
     {
         return NAZEV;
     }
+
 }

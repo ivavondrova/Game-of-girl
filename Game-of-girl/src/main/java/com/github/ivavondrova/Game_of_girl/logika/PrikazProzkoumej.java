@@ -2,6 +2,7 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package com.github.ivavondrova.Game_of_girl.logika;
 
+
 /**
  * Třída PrikazProzkoumej implementuje pro hru příkaz prozkoumej.
  * Tato třída je součástí jednoduché textové hry.
@@ -80,4 +81,5 @@ public class PrikazProzkoumej implements IPrikaz
     {
         return NAZEV;
     }
+
 }

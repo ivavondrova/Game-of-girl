@@ -46,15 +46,26 @@ public class PrikazPoloz implements IPrikaz
 
         Lokace aktualniLokace = plan.getAktualniLokace();
         String predmetKteryNechci = parametry[0];
-        Predmet mujPredmet = plan.getBatoh().vyberPredmet(predmetKteryNechci);
-
-        if (mujPredmet==null) 
+        
+        if (predmetKteryNechci==null) 
         {
             return "Tento predmet v batohu neni.";
         }
         
-        aktualniLokace.vlozPredmet(mujPredmet);
-        return " Predmet \""+predmetKteryNechci+"\" byl vyndan z batohu.";
+        else 
+        {	
+        		Predmet p;
+        		if((p = plan.getBatoh().odeberPredmet(predmetKteryNechci)) != null)
+        		{	
+        			aktualniLokace.vlozPredmet(p);
+        			return " Predmet \""+predmetKteryNechci+"\" byl vyndan z batohu.";
+        		}
+        		else {
+        			return "Zadany predmet se v batohu nenachazi!";
+        		}
+        			
+        }
+     
     }    
 
     /**

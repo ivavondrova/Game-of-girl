@@ -10,7 +10,7 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * @author      Iva Vondrová
  * @version     LS 2016/2017, 27/5/2017
  */
-interface IPrikaz 
+interface IPrikaz
 {
     
     /**

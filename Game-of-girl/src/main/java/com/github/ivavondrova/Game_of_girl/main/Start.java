@@ -2,8 +2,17 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package com.github.ivavondrova.Game_of_girl.main;
 
-import com.github.ivavondrova.Game_of_girl.logika.Hra;
-import com.github.ivavondrova.Game_of_girl.logika.IHra;
+//import com.github.ivavondrova.Game_of_girl.logika.Hra;
+//import com.github.ivavondrova.Game_of_girl.logika.IHra;
+import com.github.ivavondrova.Game_of_girl.logika.*;
+import com.github.ivavondrova.Game_of_girl.uiText.HomeController;
+import com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 //import com.github.ivavondrova.Game_of_girl.logika.*;
 //import com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani;
@@ -16,7 +25,7 @@ import com.github.ivavondrova.Game_of_girl.logika.IHra;
  * @author      Iva Vondrová
  * @version     LS 2016/2017, 27/5/2017
  */
-public class Start
+public class Start extends Application
 {
     /***************************************************************************
      * Metoda, prostřednictvím níž se spouští celá aplikace.
@@ -25,18 +34,53 @@ public class Start
      */
     public static void main(String[] args)
     {
-        IHra hra = new Hra();
-        com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani ui = new com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani(hra);
-        
-        if (args.length > 0)
-        {
-            ui.hrajZeSouboru(args[0]);
+    	if (args.length == 0) {
+            launch(args);
+        } else {
+            if (args[0].equals("-text")) {
+                IHra hra = new Hra();
+                TextoveRozhrani ui = new TextoveRozhrani(hra);
+                ui.hraj();
+            } else {
+                System.out.println("Neplatný parametr");
+            }
         }
-        else
-        {
-            ui.hraj();
-        }
+    	
+    	//		  TODO parametrické spuštění hry
+//        IHra hra = new Hra();
+//        TextoveRozhrani ui = new TextoveRozhrani(hra);
+//        ui.hraj();
+    	
+    	launch(args);
+//        IHra hra = new Hra();
+//        com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani ui = new com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani(hra);
+//        
+//        if (args.length > 0)
+//        {
+//            ui.hrajZeSouboru(args[0]);
+//        }
+//        else
+//        {
+//            ui.hraj();
+//        }
     }
-    
-    private Start() {}
+   
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(getClass().getResource("../uiText/MainWindow.fxml"));    	
+    	Parent root = loader.load();
+
+    	HomeController controller = loader.getController();
+    	IHra hra = new Hra();
+		controller.inicializuj(hra);
+    	
+    	primaryStage.setScene(new Scene(root));
+    	primaryStage.show();
+    	primaryStage.setTitle("Game of girl");
+
+		
+	}
 }

@@ -127,7 +127,7 @@ public class Predmet
     @Override
     public String toString()
     {
-        return "Predmet: " + nazev;
+        return nazev;
     }
 
 }

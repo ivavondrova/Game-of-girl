@@ -16,7 +16,7 @@ import java.util.*;
  * @version LS 2016/2017, 27/5/2017
  */
 
-public class Batoh
+public class Batoh extends Observable
 {
     private Set <Predmet> predmety;
     final int MAX_POCET_PREDMETU;
@@ -56,6 +56,8 @@ public class Batoh
     public void setPredmet (Predmet p) 
     {
         predmety.add (p); 
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -102,19 +104,23 @@ public class Batoh
      *  @param  předmět, který se má vyndat z batohu, pokud tam není, vrací null
      */
 
-    public Predmet vyberPredmet (String jm) 
-    {
-        for (Predmet p : predmety ) 
+    public Predmet odeberPredmet (String jm) 
+    {	
+    		Predmet odebranyPredmet = null;
+    		for (Predmet p : predmety ) 
         {
             if (p.getNazev().equals(jm)) 
             {
-                Predmet vybranyPredmet = p;
-                predmety.remove(vybranyPredmet);
-                return vybranyPredmet;
+            		odebranyPredmet = p;
+                predmety.remove(p);
+                //return p;
             }
         }
-        return null;
+        setChanged();
+        notifyObservers();
+        return odebranyPredmet;
     }
+
 
     /**
      *  Zjišťuje, zda je předmět v batohu
@@ -178,7 +184,10 @@ public class Batoh
         }
         return seznam; 
     }
-
+    
+    public Collection<Predmet> getPredmetyVBatohu() {
+    	 	return predmety;
+    }
 }
 
 

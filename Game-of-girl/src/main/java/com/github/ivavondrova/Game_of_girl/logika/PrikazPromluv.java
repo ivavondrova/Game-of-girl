@@ -74,4 +74,5 @@ public class PrikazPromluv implements IPrikaz
     {
             return NAZEV;
     }
+
 }

@@ -38,7 +38,7 @@ public class TextoveRozhrani
     public void hraj() 
     {
         System.out.println(hra.vratUvitani());
-        System.out.println();
+        //System.out.println();
         
         // Základní cyklus programu - opakovaně se čtou příkazy a poté
         // se provádějí do konce hry.
