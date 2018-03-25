@@ -2,9 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,11 +11,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: grey;" 
-xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="com.github.ivavondrova.Game_of_girl.uiText.HomeController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.ivavondrova.Game_of_girl.uiText.HomeController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
     <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
@@ -25,68 +22,47 @@ fx:controller="com.github.ivavondrova.Game_of_girl.uiText.HomeController">
   </columnConstraints>
   <rowConstraints>
     <RowConstraints vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-    <RowConstraints vgrow="NEVER" />
+    <RowConstraints minHeight="0.0" prefHeight="200.0" vgrow="ALWAYS" />
+    <RowConstraints minHeight="0.0" prefHeight="200.0" vgrow="NEVER" />
       <RowConstraints vgrow="NEVER" />
   </rowConstraints>
    <children>
-   	<ListView fx:id="seznamVeciVBatohu" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+   	<ListView fx:id="seznamVeciVBatohu" opacity="1" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets bottom="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
          </GridPane.margin>
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
       </ListView>
-      <ListView fx:id="seznamPostav" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <ListView fx:id="seznamPostav" prefHeight="124.0" prefWidth="130.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets bottom="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
          </GridPane.margin>
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
       </ListView>
       <ListView fx:id="seznamVeci" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets bottom="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="35.0" />
          </GridPane.margin>
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
       </ListView>
       <ListView fx:id="seznamMistnosti" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets bottom="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="35.0" />
          </GridPane.margin>
       </ListView>
-      <TextArea fx:id="textVypis" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextArea fx:id="textVypis" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
          <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="70.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </TextArea>
       <HBox GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <TextField fx:id="textVstup" onAction="#odesliPrikaz" prefHeight="26.0" prefWidth="240.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="10.0" top="140.0" />
                </HBox.margin>
             </TextField>
-            <Button fx:id="odesli" mnemonicParsing="false" onAction="#odesliPrikaz" text="OK" />
+            <Button fx:id="odesli" mnemonicParsing="false" onAction="#odesliPrikaz" text="OK">
+               <HBox.margin>
+                  <Insets top="140.0" />
+               </HBox.margin></Button>
          </children>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -94,12 +70,44 @@ fx:controller="com.github.ivavondrova.Game_of_girl.uiText.HomeController">
       </HBox>
       <ImageView fitHeight="277.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.vgrow="NEVER">
          <image>
-            <Image url="@herniPlan.png" />
+            <Image url="@mapa.png" />
          </image>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </ImageView>
+      <Text fill="WHITE" text="Předměty v batohu" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" text="Předměty v lokaci" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="10.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#fffffd" text="Postavy v lokaci" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="WHITE" text="Dostupné lokace" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="10.0" />
+         </GridPane.margin>
+      </Text>
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
