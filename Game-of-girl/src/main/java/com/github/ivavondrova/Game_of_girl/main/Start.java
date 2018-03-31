@@ -7,7 +7,6 @@ package com.github.ivavondrova.Game_of_girl.main;
 import com.github.ivavondrova.Game_of_girl.logika.*;
 import com.github.ivavondrova.Game_of_girl.uiText.HomeController;
 import com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani;
-import com.github.ivavondrova.Game_of_girl.uiText.VrchniMenu;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -23,9 +22,11 @@ import javafx.stage.Stage;
  * Třída  Start je hlavní třídou projektu, který představuje jednoduchou textovou
  * adventuru určenou k dalším úpravám a rozšiřování.
  *
- * @author      Jarmila Pavlíčková, Jan Říha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Jarmila Pavlíčková, Jan Říha
+ * @author      	Iva Vondrová
+ * @version 		LS 2016/2017, 27/5/2017 (4IT101)
+ * @version 		LS 2017/2018, 2/4/2018 (4IT115)
+ * 
  */
 public class Start extends Application
 {

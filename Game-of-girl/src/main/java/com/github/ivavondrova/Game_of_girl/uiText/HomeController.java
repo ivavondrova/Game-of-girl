@@ -7,10 +7,11 @@ import com.github.ivavondrova.Game_of_girl.logika.IHra;
 import com.github.ivavondrova.Game_of_girl.logika.Lokace;
 import com.github.ivavondrova.Game_of_girl.logika.Postava;
 import com.github.ivavondrova.Game_of_girl.logika.Predmet;
-import com.github.ivavondrova.Game_of_girl.uiText.VrchniMenu;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -18,6 +19,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.MenuBar;
 
@@ -82,7 +85,27 @@ public class HomeController extends GridPane implements Observer {
 		this.inicializuj(hra);
 	}
 	
+	public void oHre() {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game of Girl");
+        alert.setHeaderText("Game of Girl \nAdventura - textová hra rozšířena o grafickou podobu");
+        alert.setContentText("Iva Vondrová \nLS 2016/2017 - 4IT101 a LS 2017/2018 - 4IT115 \nFIS VŠE v Praze");
+        alert.showAndWait();
+	}
+	
+	public void napoveda() {
+		Stage stage = new Stage();
+        stage.setTitle("Nápověda k aplikaci");
+        WebView webview = new WebView();
+        webview.getEngine().load(
+                getClass().getResource("./napoveda.html").toExternalForm()
+        );
+        stage.setScene(new Scene(webview, 500, 500));
+        stage.show();
+	}
+	
 	/**
+	 * Metoda, která inicializuje výchozí stav hry.
 	 * 
 	 * @param hra
 	 */
@@ -105,7 +128,7 @@ public class HomeController extends GridPane implements Observer {
 	}
 
 	/**
-	 * 
+	 *  Metoda, která aktualizuje stav hry - tj. aktualizace grafických panelů, poloha hráče na mapě apod.
 	 */
 	
 	@Override
