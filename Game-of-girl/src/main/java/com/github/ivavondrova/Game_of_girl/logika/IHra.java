@@ -6,10 +6,12 @@
 /**
  * Rozhraní které musí implementovat hra, je na ně navázáno uživatelské rozhraní
  *
- * @author      Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+ 
 public interface IHra
 {
     /**
@@ -17,6 +19,9 @@ public interface IHra
      *
      * @return    vrací se řetězec, který se má vypsat na obrazovku
      */
+	
+	public void novaHra();
+	
     public String vratUvitani();
     
     /**
@@ -24,6 +29,7 @@ public interface IHra
      *
      * @return    vrací se řetězec, který se má vypsat na obrazovku
      */
+    
     public String vratEpilog();
     
     /**
@@ -31,6 +37,7 @@ public interface IHra
      *
      * @return    vrací true, pokud hra skončila
      */
+    
      public boolean konecHry();
      
     /**
@@ -41,6 +48,7 @@ public interface IHra
      * @param     radek text, který zadal uživatel jako příkaz do hry.
      * @return    vrací se řetězec, který se má vypsat na obrazovku
      */
+     
      public String zpracujPrikaz(String radek);
    
     
@@ -50,5 +58,6 @@ public interface IHra
      *
      * @return    odkaz na herní plán
      */
+     
      public HerniPlan getHerniPlan();
 }

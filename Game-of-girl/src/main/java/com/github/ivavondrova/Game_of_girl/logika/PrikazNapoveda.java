@@ -7,10 +7,13 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída PrikazNapoveda implementuje pro hru příkaz napoveda.
  * Tato třída je součástí jednoduché textové hry.
  *
- * @author      Jarmila Pavlickova, Luboš Pavlíček, Jan Říha
- * @author      Iva Vondrová
- * @version     LS2016/2017, 27/5/2017
+ * @author      	Jarmila Pavlickova, Luboš Pavlíček, Jan Říha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
+ * 
  */
+
 public class PrikazNapoveda implements IPrikaz 
 {
     private static final String NAZEV = "napoveda";
@@ -21,6 +24,7 @@ public class PrikazNapoveda implements IPrikaz
     *
     * @param    platnePrikazy seznam příkazů, které je možné ve hře použít, aby je nápověda mohla zobrazit uživateli.
     */    
+    
     public PrikazNapoveda(SeznamPrikazu platnePrikazy) 
     {
         this.platnePrikazy = platnePrikazy;
@@ -32,6 +36,7 @@ public class PrikazNapoveda implements IPrikaz
      *
      * @return    napoveda ke hre
      */
+    
     @Override
     public String proved(String... parametry) 
     {
@@ -45,6 +50,7 @@ public class PrikazNapoveda implements IPrikaz
      *
      * @return    název příkazu
      */
+    
     @Override
       public String getNazev() 
       {

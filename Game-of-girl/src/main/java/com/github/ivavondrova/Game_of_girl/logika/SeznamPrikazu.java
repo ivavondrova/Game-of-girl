@@ -14,10 +14,12 @@ import java.util.Map;
  *
  * Tato třída je součástí jednoduché textové hry.
  *
- * @author      Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author     		Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
+ * @author      		Iva Vondrová
+ * @version     		LS 2016/2017, 27/5/2017 (4IT101)
+ * @version			LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class SeznamPrikazu 
 {
     // mapa pro uložení přípustných příkazů
@@ -26,6 +28,7 @@ public class SeznamPrikazu
     /**
      * Konstruktor
      */
+    
     public SeznamPrikazu() 
     {
         platnePrikazy = new HashMap<>();
@@ -36,6 +39,7 @@ public class SeznamPrikazu
      *
      * @param    prikaz instance třídy implementující rozhraní IPrikaz
      */
+    
     public void vlozPrikaz(IPrikaz prikaz) {
         platnePrikazy.put(prikaz.getNazev(),prikaz);
     }
@@ -47,6 +51,7 @@ public class SeznamPrikazu
      * @param     retezec klíčové slovo příkazu, který chce hráč zavolat
      * @return    instance třídy, která provede požadovaný příkaz
      */
+    
     public IPrikaz vratPrikaz(String retezec) {
         if (platnePrikazy.containsKey(retezec)) {
             return platnePrikazy.get(retezec);
@@ -62,6 +67,7 @@ public class SeznamPrikazu
      * @param     retezec řetězec, který se má otestovat, zda je přípustný příkaz
      * @return    vrací hodnotu true, pokud je zadaný řetězec přípustný příkaz
      */
+    
     public boolean jePlatnyPrikaz(String retezec) {
         return platnePrikazy.containsKey(retezec);
     }
@@ -71,6 +77,7 @@ public class SeznamPrikazu
      *
      * @return    řetězec, který obsahuje seznam přípustných příkazů
      */
+    
     public String vratNazvyPrikazu() {
         String seznam = "";
         for (String slovoPrikazu : platnePrikazy.keySet()){

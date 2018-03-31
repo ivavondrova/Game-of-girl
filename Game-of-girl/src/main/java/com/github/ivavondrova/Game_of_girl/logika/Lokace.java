@@ -21,10 +21,15 @@ import java.util.stream.Collectors;
  * Lokace může mít sousední lokace připojené přes východy. Pro každý východ
  * si lokace ukládá odkaz na sousedící lokace.
  *
- * @author      Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
+ *
  */
+
+// Na rozdíl od textové verze přidány souřadnice x a y.
+
 public class Lokace extends Observable
 {
     private String nazev;   
@@ -32,6 +37,8 @@ public class Lokace extends Observable
     private Set<Lokace> vychody;   
     private Map<String, Predmet> seznamPredmetu;
     private Map<String, Postava> seznamPostav;
+    private double x;
+    private double y;
 
     /**
      * Vytvoření lokace se zadaným popisem, např. "kuchyň", "hala", "trávník před domem"
@@ -39,13 +46,16 @@ public class Lokace extends Observable
      * @param    nazev nazev lokace, jednoznačný identifikátor, jedno slovo nebo víceslovný název bez mezer
      * @param    popis Popis lokace
      */
-    public Lokace(String nazev, String popis) 
+    
+    public Lokace(String nazev, String popis, double x, double y) 
     {
         this.nazev = nazev;
         this.popis = popis;
         vychody = new HashSet<>();
         seznamPredmetu = new HashMap<String, Predmet>();
         seznamPostav = new HashMap<String, Postava>();
+        this.x = x;
+        this.y = y;
     }
 
     /**
@@ -58,6 +68,7 @@ public class Lokace extends Observable
      * @param    vedlejsi lokace, která sousedi s aktualní lokací.
      *
      */
+    
     public void setVychod(Lokace vedlejsi) 
     {
         vychody.add(vedlejsi);
@@ -73,7 +84,8 @@ public class Lokace extends Observable
      * @param     o object, který se má porovnávat s aktuálním
      * @return    hodnotu true, pokud má zadaná lokace stejný název, jinak false
      */  
-      @Override
+    
+    @Override
     public boolean equals(Object o) 
     {
         // porovnáváme zda se nejedná o dva odkazy na stejnou instanci
@@ -101,6 +113,7 @@ public class Lokace extends Observable
      * popis pravidel pro vytvareni metody hashCode je u metody hashCode ve
      * tride Object.
      */
+    
     @Override
     public int hashCode() 
     {
@@ -110,13 +123,13 @@ public class Lokace extends Observable
         return vysledek;
     }
       
-
     /**
      * Vrací název lokace (byl zadán při vytváření lokace jako parametr
      * konstruktoru)
      *
      * @return    název lokace
      */
+    
     public String getNazev() 
     {
         return nazev;       
@@ -129,6 +142,7 @@ public class Lokace extends Observable
      *
      * @return    dlouhý popis lokace
      */
+    
     public String dlouhyPopis() 
     {
         return "Jsi v mistnosti/lokaci " + popis + ".\n"
@@ -143,6 +157,7 @@ public class Lokace extends Observable
      *
      * @return    popis předmětů - názvů všech předmětů v lokaci
      */
+    
 //    private String seznamPredmetu()
 //    {
 //        String seznam = "Predmety v mistnosti: \n";
@@ -166,6 +181,7 @@ public class Lokace extends Observable
      *
      * @return    popis východů - názvů sousedních lokací
      */
+    
     private String popisVychodu() {
         String vracenyText = "vychody:";
         
@@ -184,6 +200,7 @@ public class Lokace extends Observable
      * @param     nazevSouseda Jméno sousední lokace (východu)
      * @return    lokace, která se nachází za příslušným východem, nebo hodnota null, pokud lokace zadaného jména není sousedem.
      */
+    
     public Lokace vratSousedniLokaci(String nazevSouseda) {
         List<Lokace>hledaneLokace = 
             vychody.stream()
@@ -205,6 +222,7 @@ public class Lokace extends Observable
      *
      * @return    nemodifikovatelná kolekce lokací (východů), se kterými tato lokace sousedí.
      */
+    
     public Collection<Lokace> getVychody() {
         return Collections.unmodifiableCollection(vychody);
     }
@@ -222,7 +240,11 @@ public class Lokace extends Observable
      * Přidá předmět do lokace.
      * 
      * @param    predmet předmět, který má být přidán do lokace
+     * 
+     * Zobrazení předmětů na grafickém panelu.
+     * 
      */
+    
     public void vlozPredmet(Predmet predmet)
     {
         seznamPredmetu.put(predmet.getNazev(), predmet);
@@ -236,6 +258,7 @@ public class Lokace extends Observable
      * @param   vec
      * return   true, když obsahuje, jinak false
      */
+    
     public boolean obsahujePredmet (String nazevPredmetu)
     {
         return seznamPredmetu.containsKey(nazevPredmetu);
@@ -292,6 +315,7 @@ public class Lokace extends Observable
     /**
      * Metoda vloží postavu do místnosti.
      */
+    
     public void vlozPostavu(Postava postava)
     {
         seznamPostav.put(postava.getJmeno(), postava);
@@ -300,6 +324,7 @@ public class Lokace extends Observable
     /**
      * Metoda najde postavu
      */
+    
     public Postava najdiPostavu(String jmeno)
     {
         return seznamPostav.get(jmeno);
@@ -308,6 +333,7 @@ public class Lokace extends Observable
     /**
      * Vypíše názvy postav v prostoru
      */
+    
     public String nazvyPostav()
     {
         String jmena = "Postavy: ";
@@ -317,6 +343,50 @@ public class Lokace extends Observable
         }
         return jmena;
     }
+    
+    /**
+     * Metoda na získání souřadnice x.
+     * 
+     * @return x
+     */
+    
+    public double getX() 
+    {
+    	 		return x;
+   	}
+  
+    /**
+     * Metoda set nastaví souřadnici x.
+     *
+     * @param x
+     */
+    
+    	public void setX(double x) 
+    	{
+    	 		this.x = x;
+    	}
+    	
+        /**
+         * Metoda na získání souřadnice y.
+         * 
+         * @return y
+         */
+        
+    	public double getY() 
+    	{
+    	 		return y;
+   	}
+    	
+    	  /**
+         * Metoda set nastaví souřadnici y.
+         *
+         * @param y
+         */
+    	
+    	public void setY(double y) 
+    	{
+    	 		this.y = y;
+    	}
     
     @Override
     public String toString() {

@@ -1,3 +1,11 @@
+/** 
+ * Vytvoření grafického náhledu, úprava barev, motivu apod.
+ * 
+ * @author	Iva Vondrová
+ * @version	LS 2017/2018, 2/4/2018 (4IT115)
+ * 
+ * */
+
 .list-cell:filled:selected:focused, .list-cell:filled:selected {
     -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
     -fx-text-fill: white;
@@ -54,3 +62,11 @@ GridPane {
 	-fx-background-color: white;
 }
 
+.test {
+	-fx-alignment: center-left; 
+}
+
+MenuBar {
+	-fx-background-color: #009688;
+    -fx-text-fill: white;
+}

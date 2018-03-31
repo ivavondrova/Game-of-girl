@@ -16,10 +16,12 @@ import static org.junit.Assert.*;
  * Testovací třída SeznamPrikazuTest slouží ke komplexnímu otestování třídy  
  * SeznamPrikazu
  * 
- * @author      Luboš Pavlíček, Jan Říha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Luboš Pavlíček, Jan Říha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class SeznamPrikazuTest
 {
     private Hra hra;

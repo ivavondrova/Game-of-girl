@@ -7,9 +7,11 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída PrikazPromluv je hlavní třídou projektu,
  * který představuje jednoduchou textovou hru.
  *
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class PrikazPromluv implements IPrikaz
 {
     private static final String NAZEV = "promluv";
@@ -19,6 +21,7 @@ public class PrikazPromluv implements IPrikaz
      * Kontruktor
      * @param   plan
      */
+    
     public PrikazPromluv(HerniPlan plan)
     {
         this.plan = plan;

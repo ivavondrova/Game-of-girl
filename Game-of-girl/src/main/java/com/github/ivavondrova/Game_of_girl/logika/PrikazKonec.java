@@ -7,9 +7,10 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída PrikazKonec implementuje pro hru příkaz konec.
  * Tato třída je součástí jednoduché textové hry.
  *
- * @author      Jarmila Pavlickova, Jan Riha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Jarmila Pavlickova, Jan Riha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  *  
  */
 
@@ -23,6 +24,7 @@ public class PrikazKonec implements IPrikaz
      *
      * @param    hra odkaz na hru, která má být příkazem konec ukončena
      */    
+    
     public PrikazKonec(Hra hra) 
     {
         this.hra = hra;
@@ -54,6 +56,7 @@ public class PrikazKonec implements IPrikaz
      *
      * @return    název příkazu
      */
+    
     @Override
     public String getNazev() 
     {

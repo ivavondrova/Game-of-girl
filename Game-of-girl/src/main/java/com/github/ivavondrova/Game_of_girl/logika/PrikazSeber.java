@@ -5,10 +5,13 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída představuje příkaz pro sebrání předmětu z aktuální lokace
  * a jeho vložení do batohu (inventáře) postavy.
  * 
- * @author      Jan Riha, ...
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Jan Riha, ...
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
+ *
 */
+
 public class PrikazSeber implements IPrikaz
 {
     private static final String NAZEV = "seber";
@@ -80,6 +83,7 @@ public class PrikazSeber implements IPrikaz
      *
      * @return    název příkazu
      */
+    
     public String getNazev()
     {
         return NAZEV;

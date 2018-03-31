@@ -16,9 +16,11 @@ import static org.junit.Assert.*;
  * Testovací třída {@code PostavaTest} slouží ke komplexnímu otestování
  * třídy {@link PostavaTest}.
  *
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class PostavaTest
 {
 
@@ -27,6 +29,7 @@ public class PostavaTest
      * Inicializace předcházející spuštění každého testu a připravující tzv.
      * přípravek (fixture), což je sada objektů, s nimiž budou testy pracovat.
      */
+	
     @Before
     public void setUp()
     {
@@ -36,6 +39,7 @@ public class PostavaTest
     /***************************************************************************
      * Úklid po testu - tato metoda se spustí po vykonání každého testu.
      */
+    
     @After
     public void tearDown()
     {
@@ -48,6 +52,7 @@ public class PostavaTest
     /***************************************************************************
      * Test of the {@link #setUp()} method preparing the test fixture.
      */
+    
     @Test
     public void testSetUp()
     {
@@ -56,6 +61,7 @@ public class PostavaTest
     /**
      * Testuje metody getJmeno a getProslov
      */
+    
     @Test
     public void testPostava()
     {

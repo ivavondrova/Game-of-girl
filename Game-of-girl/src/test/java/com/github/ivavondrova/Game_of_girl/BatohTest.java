@@ -19,9 +19,11 @@ import static org.junit.Assert.*;
  * Testovací třída BatohTest slouží ke komplexnímu otestování
  * třídy Batoh.
  *
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class BatohTest
 {
     private Hra hra1;
@@ -31,6 +33,7 @@ public class BatohTest
      * Inicializace předcházející spuštění každého testu a připravující tzv.
      * přípravek (fixture), což je sada objektů, s nimiž budou testy pracovat.
      */
+    
     @Before
     public void setUp()
     {
@@ -51,6 +54,7 @@ public class BatohTest
     /***************************************************************************
      * Úklid po testu - tato metoda se spustí po vykonání každého testu.
      */
+    
     @After
     public void tearDown()
     {
@@ -59,6 +63,7 @@ public class BatohTest
     /**
      * Testuje přetížení batohu tak, že postupně sbírá jednotlivé předměty a testuje, zda se do batohu vejdou, nebo nikoliv.
      */
+    
     @Test
     public void testPretizeniBatohu()
     {        		
@@ -84,6 +89,7 @@ public class BatohTest
     /**
      * Testuje přenositelnosti věcí.
      */
+    
     @Test
     public void testPrenositelnostiPredmetu()
     {        
@@ -99,11 +105,12 @@ public class BatohTest
     /**
      * Testuje přenesení věci z prostoru do prostoru.
      */
+    
     @Test
     public void testPreneseniPredmetu()
     {
-        Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek");
-        Lokace louka = new Lokace ("louka", "Louka zalita sluncem");
+        Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek", 0, 0);
+        Lokace louka = new Lokace ("louka", "Louka zalita sluncem", 1, 1);
         Predmet klic = new Predmet ("klic", "Klic od hradni brany", true, 5, false);
         domecek.vlozPredmet(klic);	
         domecek.setVychod(louka);

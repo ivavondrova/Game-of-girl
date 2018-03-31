@@ -7,9 +7,11 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída PrikazPoloz implementuje pro hru příkaz polož.
  * Tato třída je součástí jednoduché textové hry.
  *
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class PrikazPoloz implements IPrikaz 
 {
     private static final String NAZEV = "poloz";
@@ -34,6 +36,7 @@ public class PrikazPoloz implements IPrikaz
      *  @param parametry - předmět, kerý se má odebrat z batohu
      *  @return zpráva, kterou vypíše hra hráči
      */ 
+    
     @Override
 
     public String proved(String... parametry) 
@@ -73,6 +76,7 @@ public class PrikazPoloz implements IPrikaz
      *  
      *  @ return nazev prikazu
      */
+    
     @Override
 
     public String getNazev() 

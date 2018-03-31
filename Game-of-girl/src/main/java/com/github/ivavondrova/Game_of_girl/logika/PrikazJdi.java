@@ -7,10 +7,12 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída PrikazJdi implementuje pro hru příkaz jdi.
  * Tato třída je součástí jednoduché textové hry.
  *
- * @author      Jarmila Pavlickova, Lubos Pavlicek, Jan Riha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Jarmila Pavlickova, Lubos Pavlicek, Jan Riha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class PrikazJdi implements IPrikaz 
 {
     private static final String NAZEV = "jdi";
@@ -21,7 +23,8 @@ public class PrikazJdi implements IPrikaz
     * Konstruktor třídy
     *
     * @param    plan herní plán, ve kterém se bude ve hře "chodit" 
-    */    
+    */  
+    
     public PrikazJdi(HerniPlan plan) 
     {
         this.plan = plan;
@@ -35,6 +38,7 @@ public class PrikazJdi implements IPrikaz
      * @param     parametry jako parametr obsahuje jméno lokace (východu), do kterého se má jít.
      * @return    zpráva, kterou vypíše hra hráči
      */ 
+    
     @Override
     public String proved(String... parametry) 
     {
@@ -60,7 +64,7 @@ public class PrikazJdi implements IPrikaz
         else 
         {            
             // Pokud hrac chce projit do vstupni haly, ale nema mec, kterym si muze cestu vysekat.
-            if (smer.equals("vstupni_hala") && !plan.getVysekano() && !plan.getBatoh().obsahujePredmet("mec"))
+            if (smer.equals("hala") && !plan.getBatoh().obsahujePredmet("mec"))
             {
                 return "Nemas mec, nemuzes si vysekat pruchod vstupni branou, ktera je zarostla trnim. Zkus mec najit!";
             }
@@ -105,9 +109,9 @@ public class PrikazJdi implements IPrikaz
      *
      * @return    název příkazu
      */
+    
     @Override
     public String getNazev() {
         return NAZEV;
     }
-
  }

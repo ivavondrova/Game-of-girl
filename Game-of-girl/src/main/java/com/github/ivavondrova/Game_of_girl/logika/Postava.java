@@ -11,9 +11,11 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída {Postava} je hlavní třídou projektu,
  * který představuje jednoduchou textovou hru.
  *
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class Postava
 {
     private String jmeno;
@@ -22,6 +24,7 @@ public class Postava
     /**
      * Konstruktor nastavi jmeno postavy a to, co nam postava chce rict.
      */
+    
     public Postava (String jmeno, String proslov)
     {
         this.jmeno = jmeno;
@@ -33,6 +36,7 @@ public class Postava
      *
      * @return  String jmeno postavy
      */
+    
     public String getJmeno()
     {
         return jmeno;
@@ -43,6 +47,7 @@ public class Postava
      * 
      * @return  String proslov postavy
      */
+    
     public String getProslov()
     {
         return proslov;

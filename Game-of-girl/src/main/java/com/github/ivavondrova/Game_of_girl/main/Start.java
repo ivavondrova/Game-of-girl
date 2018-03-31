@@ -7,8 +7,10 @@ package com.github.ivavondrova.Game_of_girl.main;
 import com.github.ivavondrova.Game_of_girl.logika.*;
 import com.github.ivavondrova.Game_of_girl.uiText.HomeController;
 import com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani;
+import com.github.ivavondrova.Game_of_girl.uiText.VrchniMenu;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -51,7 +53,7 @@ public class Start extends Application
 //        TextoveRozhrani ui = new TextoveRozhrani(hra);
 //        ui.hraj();
     	
-    	launch(args);
+//    	launch(args);
 //        IHra hra = new Hra();
 //        com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani ui = new com.github.ivavondrova.Game_of_girl.uiText.TextoveRozhrani(hra);
 //        
@@ -80,7 +82,8 @@ public class Start extends Application
     	primaryStage.setScene(new Scene(root));
     	primaryStage.show();
     	primaryStage.setTitle("Game of girl");
-
+    	
+    	primaryStage.setOnCloseRequest(e -> Platform.exit());
 		
 	}
 }

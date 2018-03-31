@@ -9,10 +9,12 @@ package com.github.ivavondrova.Game_of_girl;
  * Přenositelné předměty je možné vložit do batohu postavy a přenášet mezi lokacemi. 
  * Nepřenositelné předměty není možné z lokace odnést.
  *
- * @author      Jan Riha, ...
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Jan Riha, ...
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class Predmet
 {
     private String nazev;
@@ -30,6 +32,7 @@ public class Predmet
      * @param   vaha            váha předmětu    
      * @param   otraveny        true, predmet je otraveny, jinak false
      */
+    
     public Predmet(String nazev, String popis, boolean prenositelny, int vaha, boolean otraveny)
     {
         this.nazev = nazev;
@@ -44,6 +47,7 @@ public class Predmet
      * 
      * @returns    název předmětu
      */
+    
     public String getNazev()
     {
         return nazev;
@@ -54,6 +58,7 @@ public class Predmet
      * 
      * @returns    popis předmětu
      */
+    
     public String getPopis()
     {
         return popis;
@@ -64,6 +69,7 @@ public class Predmet
      * 
      * @returns    true, pokud je předmět přenositelný; jinak false
      */
+    
     public boolean isPrenositelny()
     {
         return prenositelny;
@@ -85,6 +91,7 @@ public class Predmet
      * 
      * @param    popis nový popispředmětu
      */
+    
     public void setPopis(String popis)
     {
         this.popis = popis;
@@ -95,6 +102,7 @@ public class Predmet
      * 
      * @param    prenositelny   true, pokud má být předmět přenositelný; jinak false
      */
+    
     public void setPrenositelny(boolean prenositelny)
     {
         this.prenositelny = prenositelny;
@@ -117,7 +125,6 @@ public class Predmet
     {
         this.otraveny = otraveny;
     }
-    
     
     public int hashCode()
     {

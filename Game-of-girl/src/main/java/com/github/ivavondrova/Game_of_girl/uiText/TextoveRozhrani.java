@@ -13,9 +13,10 @@ import java.util.Scanner;
  * která představuje logiku aplikace. Čte vstup zadaný uživatelem a předává tento řetězec logice
  * a vypisuje odpověď logiky na konzoli.
  *
- * @author      Michael Kolling, Luboš Pavlíček, Jarmila Pavlíčková, Jan Říha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author       Michael Kolling, Luboš Pavlíček, Jarmila Pavlíčková, Jan Říha
+ * @author       Iva Vondrová
+ * @version      LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
 
 public class TextoveRozhrani 
@@ -25,6 +26,7 @@ public class TextoveRozhrani
     /**
      * Vytváří hru.
      */
+    
     public TextoveRozhrani(com.github.ivavondrova.Game_of_girl.logika.IHra hra) 
     {
         this.hra = hra;
@@ -35,6 +37,7 @@ public class TextoveRozhrani
      * čtení a zpracování příkazu od hráče do konce hry (dokud metoda konecHry()
      * z logiky nevrátí hodnotu true). Nakonec vypíše text epilogu.
      */
+    
     public void hraj() 
     {
         System.out.println(hra.vratUvitani());
@@ -61,6 +64,7 @@ public class TextoveRozhrani
      * 
      * @param    nazevSouboru název textového souboru se scénářem hry
      */
+    
     public void hrajZeSouboru(String nazevSouboru) 
     {
         System.out.println("Nacitam prikazy ze souboru '" + nazevSouboru + "':\n");
@@ -97,6 +101,7 @@ public class TextoveRozhrani
      *
      * @return    vrací přečtený příkaz jako instanci třídy String
      */
+    
     private String prectiString() 
     {
         try (Scanner scanner = new Scanner(System.in))
@@ -105,5 +110,4 @@ public class TextoveRozhrani
         		return scanner.nextLine();
         }
     }
-
 }

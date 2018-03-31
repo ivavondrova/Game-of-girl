@@ -13,7 +13,8 @@ import java.util.*;
  * Celkový počet předmětůí, které jsou uložené v batohu, je také omezený - proměnnou MAX_POCET_PREDMETU.
  *
  * @author  Iva Vondrová
- * @version LS 2016/2017, 27/5/2017
+ * @version LS 2016/2017, 27/5/2017 (4IT101)
+ * @version LS 2017/2018, 2/4/2018 (4IT115)
  */
 
 public class Batoh extends Observable
@@ -51,6 +52,8 @@ public class Batoh extends Observable
      *  Přidává předmět do batohu
      *  
      *  @param  přidávaný předmět
+     *  
+     *  Zobrazení předmětu na grafickém panelu.
      */
 
     public void setPredmet (Predmet p) 
@@ -61,7 +64,7 @@ public class Batoh extends Observable
     }
 
     /**
-     *  Zjišťuje celkovou váhu předmětůí v batohu
+     *  Zjišťuje celkovou váhu předmětů v batohu.
      *  
      *  @return  celková váha
      */
@@ -102,6 +105,8 @@ public class Batoh extends Observable
      *  Vyndá předmět z batohu
      *  
      *  @param  předmět, který se má vyndat z batohu, pokud tam není, vrací null
+     *  
+     *  Změna na grafickém panelu, předmět již není vidět (není v batohu).
      */
 
     public Predmet odeberPredmet (String jm) 

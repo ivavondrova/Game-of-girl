@@ -7,10 +7,13 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída PrikazProzkoumej implementuje pro hru příkaz prozkoumej.
  * Tato třída je součástí jednoduché textové hry.
  *
- * @author      Jan Riha, ...
- * @author      Iva Vondrová
- * @version     LS2016/2017, 27/5/2017
+ * @author      	Jan Riha, ...
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
+ * 
  */
+
 public class PrikazProzkoumej implements IPrikaz
 {
     private static final String NAZEV = "prozkoumej";
@@ -22,6 +25,7 @@ public class PrikazProzkoumej implements IPrikaz
     *
     * @param    plan herní plán, ve kterém se bude ve hře "chodit" 
     */  
+    
     public PrikazProzkoumej(HerniPlan hPlan)
     {
         this.hPlan = hPlan;
@@ -36,6 +40,7 @@ public class PrikazProzkoumej implements IPrikaz
      * @param     parametry může jako parametr obsahovat název předmětu, který chce hráč prozkoumat
      * @return    zpráva, kterou vypíše hra hráči
      */ 
+    
     @Override
     public String proved(String... parametry)
     {
@@ -76,6 +81,7 @@ public class PrikazProzkoumej implements IPrikaz
      *
      * @return    název příkazu
      */
+    
     @Override
     public String getNazev()
     {

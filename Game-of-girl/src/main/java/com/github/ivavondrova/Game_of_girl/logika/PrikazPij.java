@@ -8,9 +8,11 @@ package com.github.ivavondrova.Game_of_girl.logika;
  * Třída PrikazPij implementuje pro hru prikaz pij.
  * Tato třída je součástí jednoduché textové hry.
  *
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class PrikazPij implements IPrikaz
 {
     public static final String NAZEV = "pij";
@@ -22,6 +24,7 @@ public class PrikazPij implements IPrikaz
      * 
      * @param - herní plán, ve kterém se bude ve hře pít, batoh, ve kterém bude mít hráč nápoje
      */
+    
     public PrikazPij(Batoh batoh, HerniPlan plan)
     {
         this.plan = plan;
@@ -64,6 +67,7 @@ public class PrikazPij implements IPrikaz
     /**
      * Metoda zajišťuje, že se lektvar dá vypít pouze jednou.
      */
+    
     public String bezbarvy_napoj()
     {
         plan.getBatoh().odeberPredmet("bezbarvy_napoj");
@@ -75,6 +79,7 @@ public class PrikazPij implements IPrikaz
     /**
      * Metoda zajišťuje, že v případě vypití otráveného nápoje hra končí.
      */
+    
     public String cerveny_napoj()
     {
         plan.getBatoh().odeberPredmet("cerveny_napoj");            

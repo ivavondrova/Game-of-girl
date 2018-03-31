@@ -10,25 +10,32 @@
  * mistnosti hry a vytváří seznam platných příkazů a instance tříd provádějící jednotlivé příkazy.
  * Vypisuje uvítací a ukončovací text hry. Také vyhodnocuje jednotlivé příkazy zadané uživatelem.
  *
- * @author      Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
 
 public class Hra implements IHra 
 {
-    private SeznamPrikazu platnePrikazy;    // Obsahuje seznam přípustných příkazů
-    private HerniPlan herniPlan;            // Obsahuje informace o hře
-    private boolean konecHry = false;       // Vrací, že hra ještě neskončila
+    private SeznamPrikazu platnePrikazy;    	// Obsahuje seznam přípustných příkazů
+    private HerniPlan herniPlan;            	// Obsahuje informace o hře
+    private boolean konecHry = false;       	// Vrací, že hra ještě neskončila
     private Batoh batoh;
-    //private Lokace lokace;                  // Určuje, zda jsme již vysekali trní u vstupu do hradu
+    //private Lokace lokace;                	// Určuje, zda jsme již vysekali trní u vstupu do hradu
 
     /**
      * Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
      */
+    
     public Hra() 
     {
-        batoh = new Batoh (10, 20);                                         // Batoh (int maxPocetPredmetu, int maxVahaPredmetu)
+        novaHra();
+    }
+   
+    
+    public void novaHra() {
+    	batoh = new Batoh (10, 20);                                         // Batoh (int maxPocetPredmetu, int maxVahaPredmetu)
         herniPlan = new HerniPlan(batoh,this);
         platnePrikazy = new SeznamPrikazu();
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy));        // Přidáváme platné příkazy
@@ -40,10 +47,11 @@ public class Hra implements IHra
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
         platnePrikazy.vlozPrikaz(new PrikazProzkoumej(herniPlan));
     }
-
+    
     /**
      * Vrátí úvodní zprávu pro hráče.
      */
+    
     public String vratUvitani() 
     {
         return  "Vitejte!\n" +
@@ -57,6 +65,7 @@ public class Hra implements IHra
     /**
      * Vrátí závěrečnou zprávu pro hráče.
      */
+    
     public String vratEpilog() 
     {
         return "Dík, že jste si zahráli. :-) Ahoj.";
@@ -65,10 +74,11 @@ public class Hra implements IHra
     /** 
      * Vrací true, pokud hra skončila.
      */
+    
      public boolean konecHry() 
      {
         return konecHry;
-    }
+     }
 
     /**
      * Metoda zpracuje řetězec uvedený jako parametr, rozdělí ho na slovo příkazu a další parametry.
@@ -78,6 +88,7 @@ public class Hra implements IHra
      * @param    radek  text, který zadal uživatel jako příkaz do hry.
      * @return   vrací se řetězec, který se má vypsat na obrazovku
      */
+     
      public String zpracujPrikaz(String radek) 
      {
         String [] slova = radek.split("[ \t]+");
@@ -106,8 +117,7 @@ public class Hra implements IHra
             textKVypsani= "Nevím, co tím myslíš? Tento příkaz neznám. :-( ";
         }
         return textKVypsani;
-    }
-    
+    } 
     
     /**
      * Nastaví, že je konec hry, metodu využívá třída PrikazKonec,
@@ -115,6 +125,7 @@ public class Hra implements IHra
      *  
      * @param    konecHry hodnota false = konec hry, true = hra pokračuje
      */
+     
     void setKonecHry(boolean konecHry) 
     {
         this.konecHry = konecHry;
@@ -126,6 +137,7 @@ public class Hra implements IHra
      *  
      * @return    odkaz na herní plán
      */
+    
      public HerniPlan getHerniPlan()
      {
         return herniPlan;

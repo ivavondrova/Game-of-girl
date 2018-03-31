@@ -12,10 +12,12 @@ import static org.junit.Assert.*;
  * Testovací třída HraTest slouží ke komplexnímu otestování
  * třídy Hra
  *
- * @author      Jarmila Pavlíčková, Jan Říha
- * @author      Iva Vondrová
- * @version     LS 2016/2017, 27/5/2017
+ * @author      	Jarmila Pavlíčková, Jan Říha
+ * @author      	Iva Vondrová
+ * @version     	LS 2016/2017, 27/5/2017 (4IT101)
+ * @version		LS 2017/2018, 2/4/2018 (4IT115)
  */
+
 public class HraTest 
 {
     private Hra hra1;
@@ -32,6 +34,7 @@ public class HraTest
      * k vytvoření tzv. přípravku (fixture), což jsou datové atributy (objekty),
      * s nimiž budou testovací metody pracovat.
      */
+    
     @Before
     public void setUp() 
     {
@@ -41,6 +44,7 @@ public class HraTest
     /***************************************************************************
      * Úklid po testu - tato metoda se spustí po vykonání každé testovací metody.
      */
+    
     @After
     public void tearDown() 
     {
@@ -57,6 +61,7 @@ public class HraTest
      * jsou v místnosti a jaké věci jsou v batohu hráče.
      * 
      */
+    
     @Test
     public void testVitezstvi() 
     {
@@ -67,8 +72,8 @@ public class HraTest
         hra1.zpracujPrikaz("seber mec");
         assertEquals(false, hra1.konecHry());
         
-        hra1.zpracujPrikaz("jdi vstupni_hala");
-        assertEquals("vstupni_hala", hra1.getHerniPlan().getAktualniLokace().getNazev());
+        hra1.zpracujPrikaz("jdi hala");
+        assertEquals("hala", hra1.getHerniPlan().getAktualniLokace().getNazev());
         assertEquals(false, hra1.konecHry());
         
         hra1.zpracujPrikaz("jdi knihovna");
@@ -77,8 +82,8 @@ public class HraTest
         hra1.zpracujPrikaz("seber recept");
         assertEquals(false, hra1.konecHry());
         
-        hra1.zpracujPrikaz("jdi vstupni_hala");
-        assertEquals("vstupni_hala", hra1.getHerniPlan().getAktualniLokace().getNazev());
+        hra1.zpracujPrikaz("jdi hala");
+        assertEquals("hala", hra1.getHerniPlan().getAktualniLokace().getNazev());
         assertEquals(false, hra1.konecHry());
         
         hra1.zpracujPrikaz("jdi kuchyn");
@@ -87,12 +92,12 @@ public class HraTest
         hra1.zpracujPrikaz("pij bezbarvy_napoj");
         assertEquals(false, hra1.konecHry());
         
-        hra1.zpracujPrikaz("jdi vstupni_hala");
-        assertEquals("vstupni_hala", hra1.getHerniPlan().getAktualniLokace().getNazev());
+        hra1.zpracujPrikaz("jdi hala");
+        assertEquals("hala", hra1.getHerniPlan().getAktualniLokace().getNazev());
         assertEquals(false, hra1.konecHry());
         
-        hra1.zpracujPrikaz("jdi chodba_v_prvnim_patre");
-        assertEquals("chodba_v_prvnim_patre", hra1.getHerniPlan().getAktualniLokace().getNazev());
+        hra1.zpracujPrikaz("jdi chodba");
+        assertEquals("chodba", hra1.getHerniPlan().getAktualniLokace().getNazev());
         assertEquals(false, hra1.konecHry());
         
         hra1.zpracujPrikaz("jdi pracovna");
@@ -102,8 +107,8 @@ public class HraTest
         hra1.zpracujPrikaz("seber listina");
         assertEquals(false, hra1.konecHry());
         
-        hra1.zpracujPrikaz("jdi chodba_v_prvnim_patre");
-        assertEquals("chodba_v_prvnim_patre", hra1.getHerniPlan().getAktualniLokace().getNazev());
+        hra1.zpracujPrikaz("jdi chodba");
+        assertEquals("chodba", hra1.getHerniPlan().getAktualniLokace().getNazev());
         assertEquals(false, hra1.konecHry());
         
         hra1.zpracujPrikaz("jdi komnata");
