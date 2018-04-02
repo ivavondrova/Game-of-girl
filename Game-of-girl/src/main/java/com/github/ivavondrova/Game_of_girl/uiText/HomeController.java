@@ -124,6 +124,8 @@ public class HomeController extends GridPane implements Observer {
 		uzivatel.setX(hra.getHerniPlan().getAktualniLokace().getX());
 		uzivatel.setY(hra.getHerniPlan().getAktualniLokace().getY());
 		mapa.getStyleClass().add("test");
+		textVstup.setDisable(false);
+		odesli.setDisable(false);
 		
 	}
 
