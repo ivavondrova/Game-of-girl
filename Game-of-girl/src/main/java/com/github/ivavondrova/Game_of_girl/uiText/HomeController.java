@@ -98,7 +98,7 @@ public class HomeController extends GridPane implements Observer {
         stage.setTitle("Nápověda k aplikaci");
         WebView webview = new WebView();
         webview.getEngine().load(
-                getClass().getResource("./napoveda.html").toExternalForm()
+                getClass().getResource("/napoveda.html").toExternalForm()
         );
         stage.setScene(new Scene(webview, 500, 500));
         stage.show();

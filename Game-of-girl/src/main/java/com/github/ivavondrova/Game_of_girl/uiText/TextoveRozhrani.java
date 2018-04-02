@@ -104,10 +104,10 @@ public class TextoveRozhrani
     
     private String prectiString() 
     {
-        try (Scanner scanner = new Scanner(System.in))
-        {
+        Scanner scanner = new Scanner(System.in);
+        
         		System.out.print("> ");
         		return scanner.nextLine();
-        }
+        
     }
 }

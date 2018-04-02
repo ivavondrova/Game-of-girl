@@ -73,16 +73,16 @@ public class Start extends Application
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(getClass().getResource("../uiText/MainWindow.fxml"));    	
+    	loader.setLocation(getClass().getResource("/MainWindow.fxml"));    	
     	Parent root = loader.load();
 
     	HomeController controller = loader.getController();
-    	IHra hra = new Hra();
-		controller.inicializuj(hra);
+	controller.inicializuj(new Hra());
     	
+		
     	primaryStage.setScene(new Scene(root));
-    	primaryStage.show();
     	primaryStage.setTitle("Game of girl");
+    	primaryStage.show();
     	
     	primaryStage.setOnCloseRequest(e -> Platform.exit());
 		
