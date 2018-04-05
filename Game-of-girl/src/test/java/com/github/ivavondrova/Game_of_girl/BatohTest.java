@@ -39,14 +39,12 @@ public class BatohTest
     {
         hra1 = new Hra();        
         herniPlan = hra1.getHerniPlan();
-        Predmet klic = new Predmet ("klic", "Klic od hradni brany", true, 5,false);
+        Predmet rum = new Predmet ("rum", "rum od hradni brany", true, 5,false);
        	Predmet mec = new Predmet ("mec", "Zapomenuty mec potrebny k vysekani trni u vstupni brany", true, 10, false);
-		Predmet recept = new Predmet ("recept", "Tajny recept lektvaru, co ti da silu", true, 10, false);
 		Predmet strom = new Predmet ("strom", "Majestatne se tycici lipa", false, 20, false);
         Lokace testLokace = herniPlan.getAktualniLokace();
-        testLokace.vlozPredmet(klic);
+        testLokace.vlozPredmet(rum);
         testLokace.vlozPredmet(mec);
-        testLokace.vlozPredmet(recept);
         testLokace.vlozPredmet(strom);        
     }
 
@@ -67,23 +65,23 @@ public class BatohTest
     @Test
     public void testPretizeniBatohu()
     {        		
-		// Do batohu vlozime klic a zkontrolujeme, ze batoh skutecne klic obsahuje.
-		hra1.zpracujPrikaz("seber klic");
-		assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+		// Do batohu vlozime rum a zkontrolujeme, ze batoh skutecne rum obsahuje.
+		hra1.zpracujPrikaz("seber rum");
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("rum"));
 		
 		// Vlozime batoh a chceme vlozit mec.
-		hra1.zpracujPrikaz("seber klic");
+		hra1.zpracujPrikaz("seber rum");
 		hra1.zpracujPrikaz("seber mec");
-		assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("rum"));
 		assertTrue(herniPlan.getBatoh().obsahujePredmet("mec"));
 		
-		// Hrac se pokusi do batohu vlozit jeste recept, nyni je jiz ale batoh pretizeny.
-		hra1.zpracujPrikaz("seber klic");
+		// Hrac se pokusi do batohu vlozit jeste knihu, nyni je jiz ale batoh pretizeny.
+		hra1.zpracujPrikaz("seber rum");
 		hra1.zpracujPrikaz("seber mec");
-		hra1.zpracujPrikaz("seber recept");
-		assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+		hra1.zpracujPrikaz("seber kniha");
+		assertTrue(herniPlan.getBatoh().obsahujePredmet("rum"));
 		assertTrue(herniPlan.getBatoh().obsahujePredmet("mec"));
-		assertFalse(herniPlan.getBatoh().obsahujePredmet("recept"));
+		assertFalse(herniPlan.getBatoh().obsahujePredmet("kniha"));
     }
     
     /**
@@ -94,8 +92,8 @@ public class BatohTest
     public void testPrenositelnostiPredmetu()
     {        
         // Vezmeme do batohu věc, která je přenositelná.
-        hra1.zpracujPrikaz("seber klic");
-        assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+        hra1.zpracujPrikaz("seber rum");
+        assertTrue(herniPlan.getBatoh().obsahujePredmet("rum"));
         
         // Chceme do batohu přidat věc, která není přenositelná.
         hra1.zpracujPrikaz("seber strom");
@@ -111,19 +109,19 @@ public class BatohTest
     {
         Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek", 0, 0);
         Lokace louka = new Lokace ("louka", "Louka zalita sluncem", 1, 1);
-        Predmet klic = new Predmet ("klic", "Klic od hradni brany", true, 5, false);
-        domecek.vlozPredmet(klic);	
+        Predmet rum = new Predmet ("rum", "rum od hradni brany", true, 5, false);
+        domecek.vlozPredmet(rum);	
         domecek.setVychod(louka);
         
-        assertTrue(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
-        hra1.zpracujPrikaz("seber klic");
-        assertFalse(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
-        assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
+        assertTrue(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("rum"));
+        hra1.zpracujPrikaz("seber rum");
+        assertFalse(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("rum"));
+        assertTrue(herniPlan.getBatoh().obsahujePredmet("rum"));
         hra1.zpracujPrikaz("jdi louka");
-        assertTrue(!hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
-        assertTrue(herniPlan.getBatoh().obsahujePredmet("klic"));
-        hra1.zpracujPrikaz("poloz klic");
-        assertTrue(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("klic"));
-        assertTrue(!herniPlan.getBatoh().obsahujePredmet("klic"));
+        assertTrue(!hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("rum"));
+        assertTrue(herniPlan.getBatoh().obsahujePredmet("rum"));
+        hra1.zpracujPrikaz("poloz rum");
+        assertTrue(hra1.getHerniPlan().getAktualniLokace().obsahujePredmet("rum"));
+        assertTrue(!herniPlan.getBatoh().obsahujePredmet("rum"));
     }
 }

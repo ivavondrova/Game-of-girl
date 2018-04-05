@@ -87,11 +87,11 @@ public class LokaceTest
     public void testVeci()
     {
         Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek", 1, 1);
-        Predmet klic = new Predmet ("klic", "Klic od hradni brany", true, 5, false);
-        domecek.vlozPredmet(klic);
-        assertTrue(domecek.obsahujePredmet("klic"));
-        assertSame(klic, domecek.najdiPredmet("klic"));
-        assertSame(klic, domecek.vyberPredmet("klic"));
+        Predmet rum = new Predmet ("rum", "rum od hradni brany", true, 5, false);
+        domecek.vlozPredmet(rum);
+        assertTrue(domecek.obsahujePredmet("rum"));
+        assertSame(rum, domecek.najdiPredmet("rum"));
+        assertSame(rum, domecek.vyberPredmet("rum"));
         assertFalse(domecek.obsahujePredmet("mec"));
         assertNull(domecek.najdiPredmet("mec"));
     }

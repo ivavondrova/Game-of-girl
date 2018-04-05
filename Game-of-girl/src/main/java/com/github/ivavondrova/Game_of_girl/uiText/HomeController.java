@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
@@ -21,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.MenuBar;
 
@@ -51,6 +53,15 @@ public class HomeController extends GridPane implements Observer {
 	@FXML private MenuItem endGame;
 	private IHra hra;
 	
+	private final Image IMAGE_RUM  = new Image("/rum.png");
+    private final Image IMAGE_LISTINA  = new Image("/listina.png");
+    private final Image IMAGE_LEKTVAR  = new Image("/lektvar.png");
+    private final Image IMAGE_MEC = new Image("/mec.png");
+    private final Image IMAGE_GLOBUS = new Image("/globus.png");
+    private final Image IMAGE_KNIHA = new Image("/kniha.png");
+
+    private Image[] listOfImages = {IMAGE_RUM, IMAGE_LISTINA, IMAGE_LEKTVAR, IMAGE_MEC, IMAGE_GLOBUS, IMAGE_KNIHA};
+	
 	
 	/**
 	 * Metoda čte příkaz ze vstupního textového pole
@@ -72,9 +83,17 @@ public class HomeController extends GridPane implements Observer {
 		
 	}
 	
+	/**
+	 * Metoda pro ukončení hry.
+	 */
+	
 	public void konecHry() {
 		Platform.exit();
 	}
+	
+	/**
+	 * Metoda pro nastavení nové hry - nulování panelů (seznamu místností, věcí, postav apod.)
+	 */
 	
 	public void novaHra() {
 		seznamMistnosti.getItems().clear();
@@ -85,6 +104,10 @@ public class HomeController extends GridPane implements Observer {
 		this.inicializuj(hra);
 	}
 	
+	/**
+	 * Metoda, která nastavuje vyskakovací okno s informacemi o hře.
+	 */
+	
 	public void oHre() {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Game of Girl");
@@ -92,6 +115,10 @@ public class HomeController extends GridPane implements Observer {
         alert.setContentText("Iva Vondrová \nLS 2016/2017 - 4IT101 a LS 2017/2018 - 4IT115 \nFIS VŠE v Praze");
         alert.showAndWait();
 	}
+	
+	/**
+	 * Metoda, která nastavuje vyskakovací okno s nápovědou v html.
+	 */
 	
 	public void napoveda() {
 		Stage stage = new Stage();
@@ -144,6 +171,44 @@ public class HomeController extends GridPane implements Observer {
 		seznamPostav.getItems().addAll(hra.getHerniPlan().getAktualniLokace().getPostavy());
 		seznamVeciVBatohu.getItems().clear();
 		seznamVeciVBatohu.getItems().addAll(hra.getHerniPlan().getBatoh().getPredmetyVBatohu());
+		
+		/**
+		 * Nastavení seznamu věcí v batohu - jejich zobrazí pomocí obrázků.
+		 */
+		
+		seznamVeciVBatohu.setCellFactory(param -> new ListCell<Predmet>()
+				{
+			private ImageView imageView = new ImageView();
+            @Override
+            public void updateItem(Predmet vec, boolean empty) {
+                super.updateItem(vec, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    if(vec.getNazev().equals("rum"))
+                        imageView.setImage(listOfImages[0]);
+                    else if(vec.getNazev().equals("listina"))
+                        imageView.setImage(listOfImages[1]);
+                    else if(vec.getNazev().equals("bezbarvy_napoj"))
+                        imageView.setImage(listOfImages[2]);
+                    else if(vec.getNazev().equals("mec"))
+                        imageView.setImage(listOfImages[3]);
+                    else if(vec.getNazev().equals("globus"))
+                        imageView.setImage(listOfImages[4]);
+                    else if(vec.getNazev().equals("kniha"))
+                        imageView.setImage(listOfImages[5]);
+                    setText(vec.getNazev());
+                    setGraphic(imageView);
+                	}
+            	}
+		  }
+		);
+				
+		/**
+		 * Aktualizace aktuální lokace.
+		 */
+				
 		hra.getHerniPlan().getAktualniLokace().addObserver(this);
 		uzivatel.setX(hra.getHerniPlan().getAktualniLokace().getX());
 		uzivatel.setY(hra.getHerniPlan().getAktualniLokace().getY());

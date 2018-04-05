@@ -65,11 +65,11 @@ public class PostavaTest
     @Test
     public void testPostava()
     {
-        Postava babicka = new Postava ("babicka", "Frantisku, nezapomen klic od vstupni brany. Bud hlavne opatrny, nebezpeci muze cihat vsude... i v nedalekem lese.");
+        Postava babicka = new Postava ("babicka", "Frantisku, nezapomen rum od vstupni brany. Bud hlavne opatrny, nebezpeci muze cihat vsude... i v nedalekem lese.");
         Postava starik = new Postava ("starik", "Zdravim, davej si pozor, co si beres s sebou, ne vse si vzit muzes a tvuj batoh neni bezedny.");
         
         assertEquals("babicka", babicka.getJmeno());
-        assertEquals("Frantisku, nezapomen klic od vstupni brany. Bud hlavne opatrny, nebezpeci muze cihat vsude... i v nedalekem lese.", babicka.getProslov());
+        assertEquals("Frantisku, nezapomen rum od vstupni brany. Bud hlavne opatrny, nebezpeci muze cihat vsude... i v nedalekem lese.", babicka.getProslov());
         
         assertEquals("starik", starik.getJmeno());
         assertEquals("Zdravim, davej si pozor, co si beres s sebou, ne vse si vzit muzes a tvuj batoh neni bezedny.", starik.getProslov());

@@ -47,8 +47,8 @@ public class HerniPlan extends Observable
     {
         // Vytvářejí se jednotlivé lokace, věci a postavy v nich
         Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek", 280, 160);            	// Vytvoření místnosti (lokace)
-        Predmet klic = new Predmet ("rum", "Stary vyzraly rum", true, 5, false);                            			// Vytvoření předmětu (jeho název, popis, určení, zda je přenosný a jeho váha, zda je otraveny)
-        domecek.vlozPredmet(klic);                                                                          			// Vložení předmětu do dané místnosti
+        Predmet rum = new Predmet ("rum", "Stary vyzraly rum", true, 5, false);                            			// Vytvoření předmětu (jeho název, popis, určení, zda je přenosný a jeho váha, zda je otraveny)
+        domecek.vlozPredmet(rum);                                                                          			// Vložení předmětu do dané místnosti
         Postava babicka = new Postava ("babicka", "Frantisku, bud hlavne opatrny, nebezpeci muze cihat vsude... i v nedalekem lese.");
         domecek.vlozPostavu(babicka);
        
@@ -69,11 +69,9 @@ public class HerniPlan extends Observable
         Lokace knihovna = new Lokace ("knihovna", "Knihovna, mistnost s moudrymi knihami a poznamkami", 280, 100);
         Predmet kniha = new Predmet ("kniha", "Stara zaprasena tezka kniha", true, 20, false);
         Predmet globus = new Predmet ("globus", "Velky staroveky globus", true, 20, false);
-        Predmet recept = new Predmet ("recept", "Tajny recept lektvaru, co ti da silu", true, 10, false);
         knihovna.vlozPredmet(kniha);
         knihovna.vlozPredmet(globus);
-        knihovna.vlozPredmet(recept);
-      
+    
         Lokace vstupniHala = new Lokace ("hala", "Vstupni hala", 180, 100);
         
         Lokace kuchyn = new Lokace ("kuchyn", "Kuchyn, kde se muzes po dlouhe ceste obcerstvit... ale dej si pozor, co pijes!!", 70, 100);

@@ -64,10 +64,20 @@ public class PrikazJdi implements IPrikaz
         else 
         {            
             // Pokud hrac chce projit do vstupni haly, ale nema mec, kterym si muze cestu vysekat.
-            if (smer.equals("hala") && !plan.getBatoh().obsahujePredmet("mec"))
-            {
-                return "Nemas mec, nemuzes si vysekat pruchod vstupni branou, ktera je zarostla trnim. Zkus mec najit!";
-            }
+//        		if (smer.equals("hala")) {
+//        			if (!plan.getVysekano() || !plan.getBatoh().obsahujePredmet("mec"))
+//        			{
+//        				return "Nemas mec, nemuzes si vysekat pruchod vstupni branou, ktera je zarostla trnim. Zkus mec najit!";
+//        			}
+//        		}
+        		if (smer.equals("hala")) {
+        			if (plan.getBatoh().obsahujePredmet("mec")) {
+        				plan.setVysekano();
+        			}
+        			else if (!plan.getVysekano()) {
+        				return "Nemas mec, nemuzes si vysekat pruchod vstupni branou, ktera je zarostla trnim. Zkus mec najit!";
+        			}
+        		}
                      
             // Pokud se hrac snazi dostat do komnaty ve vezi, aniz by mel tajne heslo.
             if (smer.equals("komnata") && !plan.getBatoh().obsahujePredmet("listina"))
@@ -97,7 +107,6 @@ public class PrikazJdi implements IPrikaz
                     
             //Pokud jsme mohli vejít do místnosti
             plan.setAktualniLokace(sousedniLokace);
-            plan.setVysekano();
             return sousedniLokace.dlouhyPopis();           
         }        
         

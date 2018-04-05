@@ -79,7 +79,6 @@ public class HraTest
         hra1.zpracujPrikaz("jdi knihovna");
         assertEquals("knihovna", hra1.getHerniPlan().getAktualniLokace().getNazev());
         hra1.zpracujPrikaz("poloz mec");
-        hra1.zpracujPrikaz("seber recept");
         assertEquals(false, hra1.konecHry());
         
         hra1.zpracujPrikaz("jdi hala");
