@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -32,50 +29,34 @@
       <RowConstraints vgrow="NEVER" />
   </rowConstraints>
    <children>
-   	<ListView fx:id="seznamVeciVBatohu" maxHeight="1.7976931348623157E308" opacity="1" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+   	<ListView fx:id="seznamVeciVBatohu" maxHeight="1.7976931348623157E308" onMouseClicked="#zahodVec" opacity="1" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
          </GridPane.margin>
       </ListView>
-      <ListView fx:id="seznamPostav" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <ListView fx:id="seznamPostav" maxHeight="1.7976931348623157E308" onMouseClicked="#mluvSPostavou" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
          </GridPane.margin>
       </ListView>
-      <ListView fx:id="seznamVeci" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+      <ListView fx:id="seznamVeci" maxHeight="1.7976931348623157E308" onMouseClicked="#seberVec" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="35.0" />
          </GridPane.margin>
       </ListView>
-      <ListView fx:id="seznamMistnosti" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <ListView fx:id="seznamMistnosti" maxHeight="1.7976931348623157E308" onMouseClicked="#jdiDoLokace" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="35.0" />
          </GridPane.margin>
       </ListView>
       <TextArea fx:id="textVypis" editable="false" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
          <GridPane.margin>
-            <Insets bottom="70.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="25.0" />
          </GridPane.margin>
       </TextArea>
-      <HBox GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <children>
-            <TextField fx:id="textVstup" maxHeight="-Infinity" onAction="#odesliPrikaz" prefHeight="26.0" prefWidth="240.0" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets right="10.0" top="140.0" />
-               </HBox.margin>
-            </TextField>
-            <Button fx:id="odesli" mnemonicParsing="false" onAction="#odesliPrikaz" text="OK">
-               <HBox.margin>
-                  <Insets top="140.0" />
-               </HBox.margin></Button>
-         </children>
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </HBox>
       <AnchorPane fx:id="mapa" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1">
       <children>
-      <ImageView fitHeight="225.0" fitWidth="400.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.halignment="CENTER">
+      <ImageView fitHeight="225.0" fitWidth="400.0" layoutY="26.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-25.624526977539062" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0" GridPane.halignment="CENTER">
          <image>
             <Image url="@mapa.png" />
          </image>
@@ -125,22 +106,22 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </Text>
-      <MenuBar fx:id = "menu" layoutX="-100.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <MenuBar fx:id="menu" layoutX="-100.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
         <menus>
           <Menu mnemonicParsing="false" text="Hra">
             <items>
-              <MenuItem fx:id = "newGame" mnemonicParsing="false" onAction = "#novaHra" text="Nová hra" />
-              <MenuItem fx:id= "endGame" mnemonicParsing="false" onAction = "#konecHry" text="Konec hry" />
+              <MenuItem fx:id="newGame" mnemonicParsing="false" onAction="#novaHra" text="Nová hra" />
+              <MenuItem fx:id="endGame" mnemonicParsing="false" onAction="#konecHry" text="Konec hry" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Nápověda">
             <items>
-              <MenuItem mnemonicParsing="false" onAction = "#napoveda" text="Příběh a nápověda" />
+              <MenuItem mnemonicParsing="false" onAction="#napoveda" text="Příběh a nápověda" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="O hře">
             <items>
-              	<MenuItem mnemonicParsing="false" onAction = "#oHre" text="O hře" />
+              	<MenuItem mnemonicParsing="false" onAction="#oHre" text="O hře" />
             </items>
           </Menu>
         </menus>

@@ -46,13 +46,13 @@ public class HerniPlan extends Observable
     private void zalozLokaceHry() 
     {
         // Vytvářejí se jednotlivé lokace, věci a postavy v nich
-        Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek", 280, 160);            	// Vytvoření místnosti (lokace)
+        Lokace domecek = new Lokace ("domecek", "Domecek v podhradi, ve kterem zije Frantisek", 275, 170);            	// Vytvoření místnosti (lokace)
         Predmet rum = new Predmet ("rum", "Stary vyzraly rum", true, 5, false);                            			// Vytvoření předmětu (jeho název, popis, určení, zda je přenosný a jeho váha, zda je otraveny)
         domecek.vlozPredmet(rum);                                                                          			// Vložení předmětu do dané místnosti
         Postava babicka = new Postava ("babicka", "Frantisku, bud hlavne opatrny, nebezpeci muze cihat vsude... i v nedalekem lese.");
         domecek.vlozPostavu(babicka);
        
-        Lokace louka = new Lokace ("louka", "Louka zalita sluncem", 180, 160);
+        Lokace louka = new Lokace ("louka", "Louka zalita sluncem", 175, 170);
         Predmet strom = new Predmet ("strom", "Majestatne se tycici lipa", false, 20, false);
         Predmet motyl = new Predmet ("motyl", "Poletujici motyl Emanuel", false, 2, false);
         Predmet mec = new Predmet ("mec", "Zapomenuty mec potrebny k vysekani trni u vstupni brany", true, 10, false);
@@ -62,35 +62,35 @@ public class HerniPlan extends Observable
         Postava starik = new Postava ("starik", "Zdravim, davej si pozor, co si beres s sebou, ne vse si vzit muzes a tvuj batoh neni bezedny.");
         louka.vlozPostavu(starik);
 
-        Lokace les = new Lokace ("les", "Strasidelny les, ve kterem ciha nebezpeci - vlk, ktery te sni", 70, 160);
+        Lokace les = new Lokace ("les", "Strasidelny les, ve kterem ciha nebezpeci - vlk, ktery te sni", 65, 170);
         
-        Lokace hladomorna = new Lokace ("hladomorna", "Hladomorna, zde zemres hlady a bez Anicky.", -20, 100);
+        Lokace hladomorna = new Lokace ("hladomorna", "Hladomorna, zde zemres hlady a bez Anicky.", -25, 110);
         
-        Lokace knihovna = new Lokace ("knihovna", "Knihovna, mistnost s moudrymi knihami a poznamkami", 280, 100);
+        Lokace knihovna = new Lokace ("knihovna", "Knihovna, mistnost s moudrymi knihami a poznamkami", 275, 110);
         Predmet kniha = new Predmet ("kniha", "Stara zaprasena tezka kniha", true, 20, false);
         Predmet globus = new Predmet ("globus", "Velky staroveky globus", true, 20, false);
         knihovna.vlozPredmet(kniha);
         knihovna.vlozPredmet(globus);
     
-        Lokace vstupniHala = new Lokace ("hala", "Vstupni hala", 180, 100);
+        Lokace vstupniHala = new Lokace ("hala", "Vstupni hala", 175, 110);
         
-        Lokace kuchyn = new Lokace ("kuchyn", "Kuchyn, kde se muzes po dlouhe ceste obcerstvit... ale dej si pozor, co pijes!!", 70, 100);
+        Lokace kuchyn = new Lokace ("kuchyn", "Kuchyn, kde se muzes po dlouhe ceste obcerstvit... ale dej si pozor, co pijes!!", 65, 110);
         Predmet cervenyNapoj = new Predmet ("cerveny_napoj", "Carodej namichal jakysi lektvar... urcite bude otraveny...", true, 6, true);
         Predmet bezbarvyNapoj = new Predmet ("bezbarvy_napoj", "Zazracny napoj, ktery ti doda silu", true, 6, false);
         kuchyn.vlozPredmet(cervenyNapoj);
         kuchyn.vlozPredmet(bezbarvyNapoj);
 
-        Lokace pracovna = new Lokace ("pracovna", "Pracovna s dulezitymi dokumenty", 280, 40);
+        Lokace pracovna = new Lokace ("pracovna", "Pracovna s dulezitymi dokumenty", 275, 50);
         Predmet stul = new Predmet ("stul", "Stary zapraseny stul", false, 20, false);
         Predmet listina = new Predmet ("listina", "Listina s tajnym heslem od dveri komnaty ve vezi", true, 8, false);
         pracovna.vlozPredmet(stul);
         pracovna.vlozPredmet(listina);
         
-        Lokace chodbaVPrvnimPatre = new Lokace ("chodba", "Chodba v prvnim patre", 180, 40);
+        Lokace chodbaVPrvnimPatre = new Lokace ("chodba", "Chodba v prvnim patre", 175, 50);
         
-        Lokace loznice = new Lokace ("loznice", "Loznice, ve ktere spi carodej... ejhle, prave jsi ho vzbudil a on te promenil v krkavce...", 70, 40);
+        Lokace loznice = new Lokace ("loznice", "Loznice, ve ktere spi carodej... ejhle, prave jsi ho vzbudil a on te promenil v krkavce...", 65, 50);
         
-        Lokace komnata = new Lokace (NAZEV_VITEZNE_LOKACE, "komnata ve vezi, ve ktere byla veznena krasna Anicka... ale ty jsi ji prave zachranil", 180, -20);
+        Lokace komnata = new Lokace (NAZEV_VITEZNE_LOKACE, "komnata ve vezi, ve ktere byla veznena krasna Anicka... ale ty jsi ji prave zachranil", 175, 0);
        
         // Přiřazují se průchody mezi lokacemi (sousedící lokace)
         domecek.setVychod(louka);

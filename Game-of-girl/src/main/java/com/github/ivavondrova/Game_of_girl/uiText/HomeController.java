@@ -24,6 +24,8 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.MenuBar;
 
 /**
@@ -59,10 +61,81 @@ public class HomeController extends GridPane implements Observer {
     private final Image IMAGE_MEC = new Image("/mec.png");
     private final Image IMAGE_GLOBUS = new Image("/globus.png");
     private final Image IMAGE_KNIHA = new Image("/kniha.png");
+    private final Image IMAGE_JED = new Image("/jed.png");
 
-    private Image[] listOfImages = {IMAGE_RUM, IMAGE_LISTINA, IMAGE_LEKTVAR, IMAGE_MEC, IMAGE_GLOBUS, IMAGE_KNIHA};
+    private Image[] listOfImages = {IMAGE_RUM, IMAGE_LISTINA, IMAGE_LEKTVAR, IMAGE_MEC, IMAGE_GLOBUS, IMAGE_KNIHA, IMAGE_JED};
 	
+    /**
+     * Metoda ovládání příkazu "jdi" - po kliknutí hráč přejde do příslušné lokace.
+     */
+    
+    public void jdiDoLokace() {
+    		String temp = "jdi " + seznamMistnosti.getSelectionModel().getSelectedItem().getNazev();
+    		String vypis = hra.zpracujPrikaz(temp);
+    		textVypis.appendText("\n--------\n"+ temp + "\n--------\n");
+    		textVypis.appendText(vypis);
+    		
+    		if(hra.konecHry()) {
+    			textVypis.appendText("\n\n Konec hry \n");
+    			odesli.setDisable(true);
+    		}
+    }
+    
+    /**
+     * Metoda ovládání příkazu "seber" - po kliknutí hráč sebere věc a přidá ji do batohu.
+     */
+    
+    public void seberVec() {
+    		String temp = "seber " + seznamVeci.getSelectionModel().getSelectedItem().getNazev();
+		String vypis = hra.zpracujPrikaz(temp);
+		textVypis.appendText("\n--------\n"+ temp + "\n--------\n");
+		textVypis.appendText(vypis);
+		
+		if(hra.konecHry()) {
+			textVypis.appendText("\n\n Konec hry \n");
+			odesli.setDisable(true);
+		}
+    }
+    
+    /*
+     * Metoda na ovládání příkazu polož - po kliknutí na danou věc je věc odebraná z batohu.
+     * Pokud se jedná o lektvary (nápoje) a klikneme na ně pravým tlačítkem, nápoj bude vypit.
+     */
+    
+    public void zahodVec(MouseEvent event) {
+    		String temp, x;
+    		x = seznamVeciVBatohu.getSelectionModel().getSelectedItem().getNazev();
+    		if (event.getButton() == MouseButton.SECONDARY && (x == "bezbarvy_napoj" || x == "cerveny_napoj")) {
+    			temp = "pij " + x;
+    		}
+    		else {
+    			temp = "poloz " + x;
+    		}
+		String vypis = hra.zpracujPrikaz(temp);
+		textVypis.appendText("\n--------\n"+ temp + "\n--------\n");
+		textVypis.appendText(vypis);
+		
+		if(hra.konecHry()) {
+			textVypis.appendText("\n\n Konec hry \n");
+			odesli.setDisable(true);
+		}
+    }
 	
+    /*
+     * Metoda na ovládání příkazu "promluv".
+     */
+    
+    public void mluvSPostavou () {
+    		String temp = "promluv " + seznamPostav.getSelectionModel().getSelectedItem().getJmeno();
+		String vypis = hra.zpracujPrikaz(temp);
+		textVypis.appendText("\n--------\n"+ temp + "\n--------\n");
+		textVypis.appendText(vypis);
+		
+		if(hra.konecHry()) {
+			textVypis.appendText("\n\n Konec hry \n");
+			odesli.setDisable(true);
+		}
+    }
 	/**
 	 * Metoda čte příkaz ze vstupního textového pole
 	 * a zpracuje ho...
@@ -73,11 +146,9 @@ public class HomeController extends GridPane implements Observer {
 		String vypis = hra.zpracujPrikaz(textVstup.getText());
 		textVypis.appendText("\n--------\n"+textVstup.getText()+"\n--------\n");
 		textVypis.appendText(vypis);
-		textVstup.setText("");
 		
 		if(hra.konecHry()) {
 			textVypis.appendText("\n\n Konec hry \n");
-			textVstup.setDisable(true);
 			odesli.setDisable(true);
 		}
 		
@@ -151,8 +222,8 @@ public class HomeController extends GridPane implements Observer {
 		uzivatel.setX(hra.getHerniPlan().getAktualniLokace().getX());
 		uzivatel.setY(hra.getHerniPlan().getAktualniLokace().getY());
 		mapa.getStyleClass().add("test");
-		textVstup.setDisable(false);
-		odesli.setDisable(false);
+		// textVstup.setDisable(false);
+		// odesli.setDisable(false);
 		
 	}
 
@@ -198,6 +269,8 @@ public class HomeController extends GridPane implements Observer {
                         imageView.setImage(listOfImages[4]);
                     else if(vec.getNazev().equals("kniha"))
                         imageView.setImage(listOfImages[5]);
+                    else if(vec.getNazev().equals("cerveny_napoj"))
+                    		imageView.setImage(listOfImages[6]);
                     setText(vec.getNazev());
                     setGraphic(imageView);
                 	}

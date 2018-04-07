@@ -112,15 +112,22 @@ public class Batoh extends Observable
     public Predmet odeberPredmet (String jm) 
     {	
     		Predmet odebranyPredmet = null;
-    		for (Predmet p : predmety ) 
-        {
-            if (p.getNazev().equals(jm)) 
-            {
-            		odebranyPredmet = p;
-                predmety.remove(p);
-                //return p;
-            }
-        }
+    		for (Iterator<Predmet> iterator = predmety.iterator(); iterator.hasNext();) {
+    		    Predmet p = iterator.next();
+    		    if(p.getNazev().equals(jm)) {
+    		    		odebranyPredmet = p;
+    		        iterator.remove();
+    		    }
+    		}
+//    		for (Predmet p : predmety ) 
+//        {
+//            if (p.getNazev().equals(jm)) 
+//            {
+//            		odebranyPredmet = p;
+//                predmety.remove(p);
+//                //return p;
+//            }
+//        }
         setChanged();
         notifyObservers();
         return odebranyPredmet;

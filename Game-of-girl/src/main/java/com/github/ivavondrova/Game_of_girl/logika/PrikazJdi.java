@@ -17,6 +17,7 @@ public class PrikazJdi implements IPrikaz
 {
     private static final String NAZEV = "jdi";
     private HerniPlan plan;
+    
     //private Batoh batoh;
 
    /**
@@ -90,23 +91,18 @@ public class PrikazJdi implements IPrikaz
             {
                 return "Znáš heslo, ale dveře stejně nejdou otevřít... Jako kdyby byly něčím zablokované. Musíš zvýšit svojí sílu, jinak se do komnaty nedostaneš";
             }
-    
-            // Pokud hrac prekona vsechna uskali, ktera na nej na hrade cekaji a dostane se i s tajnym heslem ke dverim komnaty ve vezi, vyhrava.
-            if (smer.equals("komnata") && plan.getBatoh().obsahujePredmet("listina") && plan.getMagickaSila())
-            {
-                plan.getHra().setKonecHry(true);
-                return "Prekonal jsi vsechna uskali, ktera ti carokrasny ale zaroven nebezpecny hrad Lipnice nad Sazavou prichystal. \n Dostal jsi se az do komnaty ve vezi a zachranil jsi Anicku z jejiho vezeni!! \n Vyhral jsi tuto hru. \n Hip, hip hura!";
-            }
-           
-            // Hra muze pro hrace skoncit prohrou, pokud se dostane do lesa (zde ciha vlk), hladomorny, nebo loznice (kde spi carodej).  
-            if (smer.equals("les")|| smer.equals("hladomorna")|| smer.equals("loznice"))
-            { 
-                plan.getHra().setKonecHry(true);
+   
+            // Hra muze skoncit prohrou hrace, pokud se dostane do lesa (kde ciha vlk), hladomorny nebo loznice (kde spi carodej).
+            plan.setAktualniLokace(sousedniLokace);
+            if (plan.getAktualniLokace().getNazev().equals("les") || plan.getAktualniLokace().getNazev().equals("hladomorna") || plan.getAktualniLokace().getNazev().equals("loznice")) {
+            		plan.getHra().setKonecHry(true);
                 return "Umřel jsi a bez Aničky :-( ";
             }
-                    
-            //Pokud jsme mohli vejít do místnosti
-            plan.setAktualniLokace(sousedniLokace);
+            // Pokud hrac prekona vsechna uskali, ktera na nej na hrade cekaji a dostane se i s tajnym heslem ke dverim komnaty ve vezi, vyhrava. 
+            if (plan.getAktualniLokace().getNazev().equals("komnata") && plan.getBatoh().obsahujePredmet("listina") && plan.getMagickaSila()) {
+            	plan.getHra().setKonecHry(true);
+            return "Prekonal jsi vsechna uskali, ktera ti carokrasny ale zaroven nebezpecny hrad Lipnice nad Sazavou prichystal. \n Dostal jsi se az do komnaty ve vezi a zachranil jsi Anicku z jejiho vezeni!! \n Vyhral jsi tuto hru. \n Hip, hip hura!";
+            }
             return sousedniLokace.dlouhyPopis();           
         }        
         
